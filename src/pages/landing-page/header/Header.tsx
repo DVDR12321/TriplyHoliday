@@ -1,0 +1,54 @@
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Box,
+    useMediaQuery,
+    useScrollTrigger,
+} from "@mui/material";
+import { styled, useTheme } from "@mui/material/styles";
+
+const StyledAppBar = styled(AppBar, {
+    shouldForwardProp: (prop) => prop !== 'elevated',
+})<{ elevated: boolean }>(({ elevated }) => ({
+    backgroundColor: elevated ? '#ffffff' : 'transparent',
+    color: elevated ? '#000000' : '#ffffff',
+    boxShadow: elevated ? '0px 2px 4px rgba(0, 0, 0, 0.1)' : 'none',
+    transition: 'all 0.3s ease-in-out',
+}));
+
+export const Header = () => {
+    const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 0 });
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+    return (
+        <StyledAppBar position="fixed" elevated={trigger}>
+            <Toolbar sx={{ justifyContent: 'space-between', px: 4 }}>
+                {/* Logo */}
+                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                    LOGO
+                </Typography>
+
+                {!isMobile && (
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            display: 'flex',
+                            gap: 4,
+                        }}
+                    >
+                        <Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+                            Destinacije
+                        </Typography>
+                        <Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+                            Kontakt
+                        </Typography>
+                    </Box>
+                )}
+            </Toolbar>
+        </StyledAppBar>
+    );
+};

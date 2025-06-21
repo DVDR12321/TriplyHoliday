@@ -18,21 +18,32 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto, Arial, sans-serif',
+    fontFamily: `'Nocturne', serif`,
     h1: {
-      fontSize: '2.5rem',
+      fontSize: '2.25rem',
       fontWeight: 700,
+      textTransform: 'uppercase',
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: '1.75rem',
       fontWeight: 600,
+      textTransform: 'uppercase',
+    },
+    h6: {
+      fontSize: '0.875rem',
+      fontWeight: 600,
+      letterSpacing: 1,
+      textTransform: 'uppercase',
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: '0.9375rem',
       lineHeight: 1.5,
+      // textTransform: 'uppercase',
     },
     button: {
-      textTransform: 'none',
+      fontSize: '0.8125rem',
+      textTransform: 'uppercase',
+      fontWeight: 500,
     },
   },
 });
