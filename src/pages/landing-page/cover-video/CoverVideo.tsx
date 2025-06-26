@@ -37,7 +37,11 @@ export const CoverVideo = () => {
                 src={video}
                 autoPlay
                 loop
+<<<<<<< HEAD
                 muted={false}
+=======
+                muted
+>>>>>>> f013f01 ( cherrypicked last commit from the work done after the failed rebase)
                 playsInline
             />
 
