@@ -7,6 +7,7 @@ import {
     useScrollTrigger,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const StyledAppBar = styled(AppBar, {
     shouldForwardProp: (prop) => prop !== 'elevated',
@@ -43,6 +44,12 @@ export const Header = () => {
                         <Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
                             Destinacije
                         </Typography>
+                        <Link to="/aranzmani">
+                            <Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+                                Aranzmani
+                            </Typography>
+                        </Link>
+
                         <Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
                             Kontakt
                         </Typography>
