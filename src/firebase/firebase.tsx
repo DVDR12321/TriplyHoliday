@@ -4,23 +4,14 @@ import { getFirestore, doc, setDoc, getDoc, getDocs, collection } from "firebase
 import type { Arrangement } from "../types";
 
 const firebaseConfig = {
-
     apiKey: "AIzaSyDlkS9y68v2SavLAstVKXJ2zcno_oJ8WmQ",
-
     authDomain: "triply-holiday-website.firebaseapp.com",
-
     projectId: "triply-holiday-website",
-
     storageBucket: "triply-holiday-website.firebasestorage.app",
-
     messagingSenderId: "1081240272684",
-
     appId: "1:1081240272684:web:88c504aecd0d9cc89ab689",
-
     measurementId: "G-Y0JYMHNQGP"
-
 };
-
 
 const firebaseApp = initializeApp(firebaseConfig);
 
