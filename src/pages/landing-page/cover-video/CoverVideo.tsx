@@ -37,7 +37,7 @@ export const CoverVideo = () => {
                 src={video}
                 autoPlay
                 loop
-                muted={false}
+                muted
                 playsInline
             />
 
