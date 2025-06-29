@@ -3,7 +3,7 @@ import { getAllCollectionDocuments, setNewDocument } from '../../firebase/fireba
 import { useEffect, useState } from 'react';
 
 import type { Arrangement } from '../../types';
-import { ArrangementsCard } from './ArrangementsCard';
+import { ArrangementsCard } from '../arrangment-page/ArrangementsCard';
 
 export const ArrangementsPage = () => {
     const [documents, setDocuments] = useState<Arrangement[]>([]);
