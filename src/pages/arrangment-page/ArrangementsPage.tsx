@@ -7,6 +7,7 @@ import { ArrangementsCard } from './ArrangementsCard';
 import ArrangementsTag from './ArrangementsTag';
 
 import image from '../../assets/arrrangements_page_header.jpg'
+import { BookingContextProvider } from '../../context/BookingContext';
 
 
 export const ArrangementsPage = () => {
@@ -20,7 +21,6 @@ export const ArrangementsPage = () => {
     setNewDocument();
     useEffect(() => {
         loadDocuments();
-
     }, []);
 
     return (
@@ -35,14 +35,14 @@ export const ArrangementsPage = () => {
                 if (!document.available) return null;
 
                 return (
-                    <>
+                    <BookingContextProvider>
                         <ArrangementsTag />
                         <Grid size={6} key={id}>
                             <ArrangementsCard {...document} />
                         </Grid>
                         <Grid size={5} />
                         <Grid size={1} />
-                    </>
+                    </BookingContextProvider>
                 )
 
             })}

@@ -1,9 +1,8 @@
 import { Box, Button, Collapse, Divider, Stack, TextField } from "@mui/material";
-import { useContext } from "react";
-import { BookingContext } from "../../context/BookingContext";
+import { useBookingContextProvider } from "../../context/BookingContext";
 
 const ArrangementsTag = () => {
-    const { open, setOpen } = useContext(BookingContext);
+    const { open, setOpen } = useBookingContextProvider()
 
     return (
         <Box
@@ -11,7 +10,7 @@ const ArrangementsTag = () => {
                 position: "fixed",
                 top: "30%",
                 right: 0,
-                zIndex: 1300, // above most content
+                zIndex: 1300,
             }}
         >
             <Box
@@ -39,7 +38,6 @@ const ArrangementsTag = () => {
                         borderBottomLeftRadius: 5,
                     }}
                 >
-                    {/* Your form goes here */}
                     <TextField variant='outlined' required label='Ime Apartmana' fullWidth sx={{ marginBottom: '3vh' }} />
                     <TextField variant='outlined' required label='Broj Osoba' fullWidth sx={{ marginBottom: '3vh' }} />
                     <Stack direction='row'>

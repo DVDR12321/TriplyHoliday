@@ -1,8 +1,8 @@
 import {
 	AppBar,
+	Box,
 	Toolbar,
 	Typography,
-	Box,
 	useMediaQuery,
 	useScrollTrigger,
 } from "@mui/material";

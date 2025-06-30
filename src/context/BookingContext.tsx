@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import type { ReactNode, Dispatch, SetStateAction } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
+import { createContext, useContext, useState } from "react";
 
 
 type BookingContextType = {
@@ -12,15 +12,19 @@ export const BookingContext = createContext<BookingContextType>({
     setOpen: () => { }
 })
 
-type Props = {
+type BookingContextProviderProps = {
     children: ReactNode;
 };
 
-export const BookingContextProvider = ({ children }: Props) => {
-
+export const BookingContextProvider = ({ children }: BookingContextProviderProps) => {
     const [open, setOpen] = useState(false)
-
     const value = { open, setOpen };
 
-    return <BookingContext.Provider value={value}>{children}</BookingContext.Provider>
+    return (
+    <BookingContext.Provider value={value}>
+        {children}
+    </BookingContext.Provider>
+    );
 }
+
+export const useBookingContextProvider = () => useContext(BookingContext);

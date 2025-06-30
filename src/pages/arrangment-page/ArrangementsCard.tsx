@@ -1,17 +1,14 @@
-import { Box, Button, Card, CardMedia, Divider, Typography } from "@mui/material";
-import img from '../../assets/apartment_image.jpg';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import DirectionsBusFilledOutlinedIcon from '@mui/icons-material/DirectionsBusFilledOutlined';
 import KingBedOutlinedIcon from '@mui/icons-material/KingBedOutlined';
-import { useContext } from "react";
-import { BookingContext } from "../../context/BookingContext";
-
+import { Box, Button, Card, CardMedia, Divider, Typography } from "@mui/material";
+import img from '../../assets/apartment_image.jpg';
+import { useBookingContextProvider } from "../../context/BookingContext";
 
 import type { Arrangement } from "../../types";
 
-
 export const ArrangementsCard = (arrangement: Arrangement) => {
-	const { setOpen } = useContext(BookingContext);
+	const { setOpen } = useBookingContextProvider();
 	return (
 		<>
 			<Card sx={{ display: 'flex', boxShadow: '10' }}>
