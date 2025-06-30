@@ -3,7 +3,10 @@ import { getAllCollectionDocuments, setNewDocument } from '../../firebase/fireba
 import { useEffect, useState } from 'react';
 
 import type { Arrangement } from '../../types';
-import { ArrangementsCard } from '../arrangment-page/ArrangementsCard';
+import { ArrangementsCard } from './ArrangementsCard';
+import ArrangementsTag from './ArrangementsTag';
+
+import image from '../../assets/arrrangements_page_header.jpg'
 
 export const ArrangementsPage = () => {
     const [documents, setDocuments] = useState<Arrangement[]>([]);
@@ -18,26 +21,30 @@ export const ArrangementsPage = () => {
         loadDocuments();
     }, []);
 
-
     return (
         <Grid container spacing={2} sx={{ width: "100vw" }} >
-            <Grid size={2} />
+            <Grid size={12} >
+                <img src={image} alt='header image' style={{ height: '80vh', width: '100vw' }} />
+            </Grid>
+            <Grid size={1} />
+
             {documents.map((document, id) => {
 
                 if (!document.available) return null;
 
                 return (
                     <>
+                        <ArrangementsTag />
                         <Grid size={6} key={id}>
                             <ArrangementsCard {...document} />
                         </Grid>
-                        <Grid size={4} />
-                        <Grid size={2} />
+                        <Grid size={5} />
+                        <Grid size={1} />
                     </>
                 )
 
             })}
 
-        </Grid>
+        </Grid >
     )
 }
