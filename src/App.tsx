@@ -7,19 +7,17 @@ import { LandingPage } from './pages/landing-page/LandingPage'
 import { ArrangementsPage } from './pages/arrangment-page/ArrangementsPage'
 import { Layout } from './layout/Layout'
 
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <Router>
+      <Router>
         <Layout>
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/aranzmani" element={<ArrangementsPage />} />
           </Routes></Layout>
-        </Router>
-      
+      </Router>
     </ThemeProvider>
   )
 }

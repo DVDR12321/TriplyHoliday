@@ -1,8 +1,8 @@
 import {
 	AppBar,
+	Box,
 	Toolbar,
 	Typography,
-	Box,
 	useMediaQuery,
 	useScrollTrigger,
 } from "@mui/material";
@@ -43,12 +43,15 @@ export const Header = () => {
 							display: 'flex',
 							gap: 4,
 						}}>
-						<Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-							Destinacije
-						</Typography>
-						<Link to="/aranzmani">
+						<Link to='/' style={{ textDecoration: 'none', textTransform: 'none', all: "unset", }}>
 							<Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
-								Aranzmani
+								Destinacije
+							</Typography>
+						</Link>
+
+						<Link to="/aranzmani" style={{ textDecoration: 'none', textTransform: 'none', all: "unset", }}>
+							<Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
+								Aranžmani
 							</Typography>
 						</Link>
 						<Typography variant="h6" component="a" sx={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}>
