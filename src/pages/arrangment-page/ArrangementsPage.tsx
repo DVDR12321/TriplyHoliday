@@ -8,6 +8,7 @@ import ArrangementsTag from './ArrangementsTag';
 
 import image from '../../assets/arrrangements_page_header.jpg'
 
+
 export const ArrangementsPage = () => {
     const [documents, setDocuments] = useState<Arrangement[]>([]);
 
@@ -19,6 +20,7 @@ export const ArrangementsPage = () => {
     setNewDocument();
     useEffect(() => {
         loadDocuments();
+
     }, []);
 
     return (
