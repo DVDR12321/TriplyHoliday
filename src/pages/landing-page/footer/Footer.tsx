@@ -26,26 +26,16 @@ export const Footer = () => {
       sx={{
         position: 'relative',
         color: '#e1e4e8',
-        pt: 8,
-        pb: 6,
+        pt: 6,
+        pb: 4,
         overflow: 'hidden',
         backgroundImage:
-          'url("https://pixnio.com/free-images/2019/01/23/2019-01-23-09-08-52.jpg")',
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url("https://pixnio.com/free-images/2019/01/23/2019-01-23-09-08-52.jpg")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
       }}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          bgcolor: 'rgba(13, 17, 23, 0.75)',
-          zIndex: 0,
-        }}
-      />
-
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Box
           sx={{
@@ -55,15 +45,31 @@ export const Footer = () => {
             gap: 4,
           }}
         >
+          {/* About Section */}
           <Box sx={{ flex: '1 1 300px', minWidth: 280 }}>
-            <Typography variant="h5" fontWeight="bold" gutterBottom>
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              gutterBottom
+              sx={{ fontFamily: '"Montserrat", sans-serif' }} // New font
+            >
               Triply Holiday
             </Typography>
-            <Typography variant="body2" sx={{ mb: 3, lineHeight: 1.6 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                mb: 3,
+                lineHeight: 1.6,
+                fontFamily: '"Montserrat", sans-serif',
+              }} // New font
+            >
               Vaša pouzdana turistička agencija. Pružamo nezaboravne destinacije
               i vrhunsku uslugu prilagođenu vašim željama.
             </Typography>
-            <Typography variant="body2" sx={{ mb: 1 }}>
+            <Typography
+              variant="body2"
+              sx={{ mb: 1, fontFamily: '"Montserrat", sans-serif' }} // New font
+            >
               Telefon:{' '}
               <Link
                 href="tel:+38111222333"
@@ -74,7 +80,10 @@ export const Footer = () => {
                 +381 11 222 333
               </Link>
             </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
+            <Typography
+              variant="body2"
+              sx={{ mb: 2, fontFamily: '"Montserrat", sans-serif' }} // New font
+            >
               Email:{' '}
               <Link
                 href="mailto:info@triplyholiday.rs"
@@ -91,7 +100,11 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener"
                 aria-label="Facebook"
-                sx={{ color: '#4267B2' }}
+                sx={{
+                  color: '#4267B2',
+                  bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  '&:hover': { bgcolor: '#4267B2', color: '#fff' },
+                }}
               >
                 <FacebookIcon />
               </IconButton>
@@ -100,7 +113,11 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener"
                 aria-label="Instagram"
-                sx={{ color: '#C13584' }}
+                sx={{
+                  color: '#C13584',
+                  bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  '&:hover': { bgcolor: '#C13584', color: '#fff' },
+                }}
               >
                 <InstagramIcon />
               </IconButton>
@@ -109,7 +126,11 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener"
                 aria-label="WhatsApp"
-                sx={{ color: '#25D366' }}
+                sx={{
+                  color: '#25D366',
+                  bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  '&:hover': { bgcolor: '#25D366', color: '#fff' },
+                }}
               >
                 <WhatsAppIcon />
               </IconButton>
@@ -118,15 +139,25 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener"
                 aria-label="Viber"
-                sx={{ color: '#665CAC' }}
+                sx={{
+                  color: '#665CAC',
+                  bgcolor: 'rgba(255, 255, 255, 0.1)',
+                  '&:hover': { bgcolor: '#665CAC', color: '#fff' },
+                }}
               >
                 <ViberIcon />
               </IconButton>
             </Stack>
           </Box>
 
+          {/* Links Section */}
           <Box sx={{ flex: '1 1 150px', minWidth: 150 }}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              gutterBottom
+              sx={{ fontFamily: '"Montserrat", sans-serif' }} // New font
+            >
               Linkovi
             </Typography>
             <Stack spacing={1}>
@@ -145,11 +176,20 @@ export const Footer = () => {
             </Stack>
           </Box>
 
+          {/* Subscribe Section */}
           <Box sx={{ flex: '1 1 300px', minWidth: 280 }}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              gutterBottom
+              sx={{ fontFamily: '"Montserrat", sans-serif' }} // New font
+            >
               Pretplatite se na novosti
             </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
+            <Typography
+              variant="body2"
+              sx={{ mb: 2, fontFamily: '"Montserrat", sans-serif' }} // New font
+            >
               Ostanite u toku sa najnovijim ponudama i akcijama.
             </Typography>
             <Box
@@ -171,7 +211,15 @@ export const Footer = () => {
                   },
                 }}
               />
-              <Button variant="contained" color="secondary" type="submit">
+              <Button
+                variant="contained"
+                color="secondary"
+                type="submit"
+                sx={{
+                  bgcolor: '#ff5722',
+                  '&:hover': { bgcolor: '#e64a19' },
+                }}
+              >
                 Pošalji
               </Button>
             </Box>
@@ -180,7 +228,12 @@ export const Footer = () => {
 
         <Typography
           variant="body2"
-          sx={{ mt: 6, textAlign: 'center', opacity: 0.5 }}
+          sx={{
+            mt: 6,
+            textAlign: 'center',
+            opacity: 0.5,
+            fontFamily: '"Montserrat", sans-serif',
+          }}
         >
           © {new Date().getFullYear()} Triply Holiday. Sva prava zadržana.
         </Typography>

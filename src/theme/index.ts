@@ -18,32 +18,64 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: `'Nocturne', serif`,
+    fontFamily: '"Poppins", Arial, sans-serif', // Define Poppins font globally
     h1: {
-      fontSize: '2.25rem',
+      fontSize: '3.2rem',
       fontWeight: 700,
-      textTransform: 'uppercase',
+      lineHeight: 1.1,
     },
     h2: {
-      fontSize: '1.75rem',
+      fontSize: '2.5rem',
       fontWeight: 600,
-      textTransform: 'uppercase',
-    },
-    h6: {
-      fontSize: '0.875rem',
-      fontWeight: 600,
-      letterSpacing: 1,
-      textTransform: 'uppercase',
     },
     body1: {
-      fontSize: '0.9375rem',
+      fontSize: '1rem',
       lineHeight: 1.5,
-      // textTransform: 'uppercase',
     },
     button: {
-      fontSize: '0.8125rem',
-      textTransform: 'uppercase',
+      fontSize: '1rem',
       fontWeight: 500,
+      textTransform: 'none',
+    },
+    link: {
+      fontWeight: 500,
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          margin: 0,
+          fontFamily: '"Poppins", Arial, sans-serif',
+          backgroundColor: COLORS.background,
+          color: COLORS.textPrimary,
+        },
+        a: {
+          fontWeight: 500,
+          color: COLORS.primary,
+          textDecoration: 'inherit',
+          '&:hover': {
+            color: COLORS.secondary,
+          },
+        },
+        button: {
+          borderRadius: '8px',
+          border: '1px solid transparent',
+          padding: '0.6em 1.2em',
+          fontSize: '1em',
+          fontWeight: 500,
+          fontFamily: 'inherit',
+          backgroundColor: COLORS.textPrimary,
+          cursor: 'pointer',
+          transition: 'border-color 0.25s',
+          '&:hover': {
+            borderColor: COLORS.primary,
+          },
+          '&:focus, &:focus-visible': {
+            outline: '4px auto -webkit-focus-ring-color',
+          },
+        },
+      },
     },
   },
 });
