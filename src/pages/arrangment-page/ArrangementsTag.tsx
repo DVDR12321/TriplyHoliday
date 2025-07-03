@@ -1,21 +1,57 @@
+import type { SelectChangeEvent } from '@mui/material';
 import {
   Box,
   Button,
   Collapse,
   Divider,
+  FormControl, InputLabel,
+  MenuItem, Select,
   Stack,
   TextField,
 } from '@mui/material';
 import { useBookingContextProvider } from '../../context/BookingContext';
 
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import { useState } from 'react';
+
 const ArrangementsTag = () => {
-  const { open, setOpen } = useBookingContextProvider();
+  const { name, setName, open, setOpen } = useBookingContextProvider();
+  const [country, setCountry] = useState('serbia')
+
+  const handleClick = () => {
+    setOpen(open => !open);
+    setName('');
+  }
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setCountry(event.target.value);
+  };
+
+  const FlagMenu = () => (
+
+    <FormControl fullWidth>
+      <InputLabel id="flag-select-label">Država</InputLabel>
+      <Select
+        labelId="flag-select-label"
+        value={country}
+        defaultValue='serbia'
+        label="Država"
+        onChange={handleChange}
+      >
+        <MenuItem value="serbia">🇷🇸 </MenuItem>
+        <MenuItem value="montenegro">🇲🇪 </MenuItem>
+        <MenuItem value="macedonia">🇲🇰 </MenuItem>
+        <MenuItem value="croatia">🇭🇷 </MenuItem>
+        <MenuItem value="bosnia">🇧🇦 </MenuItem>
+        <MenuItem value="slovenia">🇸🇮</MenuItem>
+      </Select>
+    </FormControl>
+  )
 
   return (
     <Box
       sx={{
-        position: 'fixed',
-        top: '30%',
+        position: 'absolute',
         right: 0,
         zIndex: 1300,
       }}
@@ -29,7 +65,7 @@ const ArrangementsTag = () => {
           borderBottomLeftRadius: 0,
           cursor: 'pointer',
         }}
-        onClick={() => setOpen(!open)}
+        onClick={handleClick}
       >
         Bukiraj
       </Box>
@@ -37,8 +73,8 @@ const ArrangementsTag = () => {
       <Collapse in={open} orientation="horizontal">
         <Box
           sx={{
-            width: 350,
-            height: 525,
+            width: '20vw',
+            height: '70vh',
             backgroundColor: 'background.paper',
             boxShadow: 3,
             p: 2,
@@ -50,49 +86,71 @@ const ArrangementsTag = () => {
             required
             label="Ime Apartmana"
             fullWidth
-            sx={{ marginBottom: '3vh' }}
+            value={name}
+            sx={{ marginBottom: '2vh' }}
           />
           <TextField
             variant="outlined"
             required
             label="Broj Osoba"
             fullWidth
-            sx={{ marginBottom: '3vh' }}
+            sx={{ marginBottom: '2vh' }}
           />
           <Stack direction="row">
             <TextField
               variant="outlined"
               required
               label="Datum od"
-              sx={{ marginBottom: '1vh', marginRight: '1vw' }}
+              sx={{ marginBottom: '1vh', marginRight: '1ch' }}
             />
             <TextField
               variant="outlined"
               required
               label="Datum do"
-              sx={{ marginBottom: '1vh', marginLeft: '1vw' }}
+              sx={{ marginBottom: '1vh', marginLeft: '1ch' }}
             />
           </Stack>
-          <Divider orientation="horizontal" sx={{ my: 2 }}></Divider>
+          <Divider orientation="horizontal" sx={{ my: "2vh" }}></Divider>
           <TextField
             variant="outlined"
             required
-            label="Vaš email"
+            label="Ime"
             fullWidth
-            sx={{ marginBottom: '3vh' }}
+            sx={{ marginBottom: '2vh' }}
           />
           <TextField
             variant="outlined"
-            label="Komentar"
+            required
+            label="Email"
             fullWidth
-            sx={{ marginBottom: '3vh' }}
+            sx={{ marginBottom: '2vh' }}
+          />
+          <Stack direction="row">
+            <FlagMenu />
+            <TextField
+              variant="outlined"
+              required
+              label="Broj telefona"
+              fullWidth
+              sx={{ marginBottom: '2vh', marginLeft: '1ch' }}
+            />
+          </Stack>
+
+          <TextField
+            variant="outlined"
+            label="Poruka"
+            fullWidth
+            multiline
+            rows={2}
+            sx={{ marginBottom: '2vh' }}
           />
           <Button
             fullWidth
             variant="contained"
+            endIcon={<SendOutlinedIcon />}
             onClick={() => alert('Uspešno poslato!')}
           >
-            Pošaljite upit
+            Pošalji upit
           </Button>
         </Box>
       </Collapse>

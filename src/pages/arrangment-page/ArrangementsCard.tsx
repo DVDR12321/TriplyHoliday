@@ -7,21 +7,27 @@ import {
   Card,
   CardMedia,
   Divider,
-  Typography,
+  Typography
 } from '@mui/material';
 import img from '../../assets/apartment_image.jpg';
 import { useBookingContextProvider } from '../../context/BookingContext';
 
 import type { Arrangement } from '../../types';
 
-export const ArrangementsCard = (arrangement: Arrangement) => {
-  const { setOpen } = useBookingContextProvider();
+export const ArrangementsCard = (arrangementData: Arrangement) => {
+  const { setName, setOpen } = useBookingContextProvider();
+
+  const handleClick = () => {
+    setOpen(true);
+    setName(arrangementData.name);
+  }
+
   return (
     <>
       <Card sx={{ display: 'flex', boxShadow: '10' }}>
         <CardMedia
           component="img"
-          sx={{ width: '18vw', height: '28vh' }}
+          sx={{ width: '25vw', height: '35vh' }}
           image={img}
           alt="apartment image"
         />
@@ -33,10 +39,10 @@ export const ArrangementsCard = (arrangement: Arrangement) => {
           }}
         >
           <Typography variant="h4" fontWeight="bold">
-            Apartman
+            {arrangementData.name}
           </Typography>
           <Typography component="div" variant="h5" paddingBottom="1ch">
-            {arrangement.city} | {arrangement.country}
+            {arrangementData.city} | {arrangementData.country}
           </Typography>
 
           <Box
@@ -50,10 +56,9 @@ export const ArrangementsCard = (arrangement: Arrangement) => {
             <Typography
               component="div"
               variant="body2"
-              fontWeight="bold"
               padding="0 2ch 0 2ch "
             >
-              {arrangement.availableDates}
+              {arrangementData.availableDates}
             </Typography>
             <Divider orientation="vertical" />
             <Box sx={{ paddingLeft: '2ch' }}>
@@ -63,10 +68,9 @@ export const ArrangementsCard = (arrangement: Arrangement) => {
             <Typography
               component="div"
               variant="body2"
-              fontWeight="bold"
               padding="0 2ch 0 2ch "
             >
-              {arrangement.transportation}
+              {arrangementData.transportation}
             </Typography>
             <Divider orientation="vertical" />
             <Box sx={{ paddingLeft: '2ch' }}>
@@ -75,33 +79,38 @@ export const ArrangementsCard = (arrangement: Arrangement) => {
             <Typography
               component="div"
               variant="body2"
-              fontWeight="bold"
               padding="0 2ch 0 2ch "
             >
-              {arrangement.numberOfNights} noćenja
+              {arrangementData.numberOfNights} noćenja
             </Typography>
           </Box>
-          <Typography component="div" variant="body2">
-            {arrangement.tags.map((element) => `${element}  — `)}
+          <Divider sx={{ my: '1vh', borderStyle: 'dashed', borderColor: 'grey.500' }} />
+          <Typography variant="body1" fontWeight='bold'>
+            Dodatne informacije
           </Typography>
-
-          <Divider sx={{ paddingTop: '1vh' }} />
+          <Typography component="div" variant="body2" >
+            {arrangementData.tags.map((element, i) => (
+              <span style={{ fontStyle: 'italic' }} key={i}>{element}{i !== arrangementData.tags.length - 1 ? ' — ' : ''}</span>
+            ))}
+          </Typography>
+          <Divider sx={{ my: '1vh', borderStyle: 'dashed', borderColor: 'grey.500' }} />
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              padding: '1vh 0 0 0',
+              paddingTop: '1vh',
             }}
           >
-            <Typography variant="h5" color="#0080FF">
-              Od {arrangement.pricePerDay} €
+            <Typography variant="h5" color="#0080FF" fontWeight='bold'>
+              Od {arrangementData.pricePerDay} €
             </Typography>
-            <Button variant="outlined" onClick={() => setOpen(true)}>
+            <Button variant="outlined" onClick={handleClick} >
               {' '}
-              Bukiraj{' '}
+              Pošalji upit{' '}
             </Button>
           </Box>
+
         </Box>
       </Card>
     </>

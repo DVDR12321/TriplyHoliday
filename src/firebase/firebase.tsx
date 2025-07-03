@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from "firebase/firestore";
 
 import type { Arrangement } from "../types";
 
@@ -27,14 +27,15 @@ export const setNewDocument = async () => {
     }
     try {
         await setDoc(documentRef, {
+            name: 'Vila Gamma',
             country: 'Greece',
-            city: 'Atina',
-            pricePerDay: '10',
+            city: 'Kassandra',
+            pricePerDay: '100',
             transportation: 'Organizovan prevoz',
             numberOfNights: '5-15',
             availableDates: 'Po upitu',
             description: 'This is a such and such appartment, perfect for families',
-            tags: ["Apartman ", "4 kreveta", "WiFi"],
+            tags: ["Ceo objekat ", "8 kreveta", '2 deteta gratis', 'u blizini plaže'],
             available: true,
         },
         );
@@ -55,6 +56,5 @@ export const getAllCollectionDocuments = async (collectionName: string) => {
         id: doc.id,
         ...(doc.data() as Omit<Arrangement, 'id'>),
     }));
-    console.log(documentsArray);
     return documentsArray;
 }
