@@ -1,6 +1,7 @@
 import { GreeceMapSection } from '../greece-map/GreeceMapSection';
 import { PopularDestinationsSection } from '../popular-destionations/PopularDestionations';
 import { CoverVideo } from './cover-video/CoverVideo';
+import EndSection from './end-section/EndSection';
 import { RecommendedDestinations } from './recommended-destinations/RecommendedDestinations';
 
 export const LandingPage = () => {
@@ -10,6 +11,7 @@ export const LandingPage = () => {
       <PopularDestinationsSection />
       <GreeceMapSection />
       <RecommendedDestinations />
+      <EndSection />
     </>
   );
 };

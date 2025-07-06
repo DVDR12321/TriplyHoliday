@@ -1,4 +1,4 @@
-import { Box, CardMedia, Typography } from '@mui/material';
+import { Box, CardMedia, Divider, Stack, Typography } from '@mui/material';
 
 const accommodations = [
   {
@@ -67,14 +67,14 @@ export const RecommendedDestinations = () => {
           gap: 3,
         }}
       >
-        {accommodations.map(({ title, price, imageUrl }) => (
+        {accommodations.map(({ title, price, imageUrl }, id) => (
           <Box
             key={title}
             sx={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              textAlign: 'center',
+              textAlign: 'start',
               gap: '20px',
               cursor: 'pointer',
               overflow: 'hidden',
@@ -109,23 +109,29 @@ export const RecommendedDestinations = () => {
             <Box
               sx={{
                 backgroundColor: '#fff',
-                borderRadius: '0 0 24px 24px',
+                borderRadius: '10px 10px 0 0',
                 boxShadow: 3,
                 px: 2,
                 pt: 6,
-                pb: 4,
+                pb: 2,
                 width: '100%',
                 maxWidth: '100%',
                 position: 'relative',
                 zIndex: 1,
               }}
             >
-              <Typography variant="h6" component="h3" gutterBottom>
-                {title}
+              <Typography variant="h5" component="h3" gutterBottom sx={{ whiteSpace: 'pre', marginBottom: '2ch', fontWeight: '500' }}>
+                Vila {id + 1} | {title}
               </Typography>
-              <Typography variant="body1" color="text.secondary">
-                od {price} evra
-              </Typography>
+              <Divider orientation='horizontal'></Divider>
+              <Stack direction='row' sx={{ marginTop: '2ch' }} alignItems='center'>
+                <Typography variant='body2' color='text.secondary' sx={{ whiteSpace: 'pre' }}>
+                  {"Cena od:   "}
+                </Typography>
+                <Typography variant="h5" color="#0080FF" fontWeight={700}>
+                  {price} €
+                </Typography>
+              </Stack>
             </Box>
           </Box>
         ))}
