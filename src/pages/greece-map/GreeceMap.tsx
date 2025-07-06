@@ -3,7 +3,7 @@ import { Region } from './Region';
 import { regionNameMap, type SvgPath } from './types';
 
 const Svg = styled.svg`
-  width: 600px;
+  width: 700px;
   height: auto;
 `;
 
@@ -20,7 +20,15 @@ export const GreeceMap = ({
 }: GreeceMapProps) => {
   const handleRegionClick = (id: string, name: string) => {
     const translated = regionNameMap[name] || name;
-    alert(`Kliknuto: ${translated} (ID: ${id})`);
+    //alert(`Kliknuto: ${translated} (ID: ${id})`);
+
+    const section = document.getElementById('recommennded-destinations');
+    if (section) {
+      const yOffset = -70;
+      const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+
   };
 
   return (
