@@ -82,7 +82,6 @@ export const ArrangementsTag = () => {
         </Box>
 
         <Box sx={{ p: 2, overflowY: 'auto' }}>
-          {/* Step 1 */}
           {step === 1 && (
             <>
               <TextField
@@ -104,6 +103,30 @@ export const ArrangementsTag = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 sx={{ mb: 2 }}
               />
+              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="flag-select-label">Država</InputLabel>
+                  <Select
+                    labelId="flag-select-label"
+                    value={country}
+                    label="Država"
+                    onChange={handleChangeCountry}
+                  >
+                    {COUNTRIES.map((c) => (
+                      <MenuItem key={c.value} value={c.value}>
+                        {c.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <TextField
+                  variant="outlined"
+                  label="Broj telefona"
+                  fullWidth
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </Stack>
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button variant="contained" onClick={nextStep}>
                   Dalje
@@ -133,30 +156,6 @@ export const ArrangementsTag = () => {
                   label="Datum do"
                   value={dateTo}
                   onChange={(newValue) => setDateTo(newValue)}
-                />
-              </Stack>
-              <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="flag-select-label">Država</InputLabel>
-                  <Select
-                    labelId="flag-select-label"
-                    value={country}
-                    label="Država"
-                    onChange={handleChangeCountry}
-                  >
-                    {COUNTRIES.map((c) => (
-                      <MenuItem key={c.value} value={c.value}>
-                        {c.label}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-                <TextField
-                  variant="outlined"
-                  label="Broj telefona"
-                  fullWidth
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
                 />
               </Stack>
               <TextField

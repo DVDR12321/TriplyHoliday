@@ -7,16 +7,24 @@ import type { Arrangement } from '../../types';
 import { ArrangementsCard } from './ArrangementsCard';
 import SortBy from './SortBy';
 
-import app3 from '../../assets/apartment_image.jpg';
-import app1 from '../../assets/app1.jpg';
-import app2 from '../../assets/app2.jpg';
-import image from '../../assets/arrrangements_page_header.jpg';
+import app3 from '../../assets/apartments/apartment_image1.jpg';
+import app1 from '../../assets/apartments/apartment_image2.jpg';
+import app2 from '../../assets/apartments/apartment_image3.jpg';
+import coverImage from '../../assets/arrrangements_page_header.jpg';
 
 import { Link, useLocation } from 'react-router-dom';
 import { ArrangementsTag } from './ArrangementsTag';
 
 // TODO move this to firebase
 export const APPARTMENT_IMAGES = [app2, app1, app3];
+
+export const HeaderGrid = styled(Grid)`
+  background-attachment: fixed;
+  width: 100%;
+  height:65vh;
+  background-image : url(${coverImage});
+  background-repeat: 'no-repeat';
+`
 
 export const ArrangementsPage = () => {
   const [documents, setDocuments] = useState<Arrangement[]>([]);
@@ -86,5 +94,6 @@ export const ArrangementsPage = () => {
           );
         })}
       </Grid>
-      );
+    </>
+  );
 };
