@@ -9,12 +9,17 @@ import {
   Divider,
   Typography,
 } from '@mui/material';
-import img from '../../assets/apartment_image.jpg';
+
 import { useBookingContextProvider } from '../../context/BookingContext';
 
 import type { Arrangement } from '../../types';
 
-export const ArrangementsCard = (arrangementData: Arrangement) => {
+type ArrangementsCard = {
+  arrangementData: Arrangement;
+  image: string;
+}
+
+export const ArrangementsCard = ({arrangementData, image } : ArrangementsCard) => {
   const { setName, setOpen } = useBookingContextProvider();
 
   const handleClick = () => {
@@ -28,7 +33,7 @@ export const ArrangementsCard = (arrangementData: Arrangement) => {
         <CardMedia
           component="img"
           sx={{ width: '25vw', height: '35vh' }}
-          image={img}
+          image={image}
           alt="apartment image"
         />
         <Box
