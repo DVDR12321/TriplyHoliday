@@ -16,11 +16,14 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/aranzmani" element={
-              <BookingContextProvider>
-                <ArrangementsPage />
-              </BookingContextProvider>
-            } />
+            <Route
+              path="/aranzmani"
+              element={
+                <BookingContextProvider>
+                  <ArrangementsPage />
+                </BookingContextProvider>
+              }
+            />
           </Routes>
         </Layout>
       </Router>

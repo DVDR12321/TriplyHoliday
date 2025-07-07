@@ -4,11 +4,14 @@ import {
   Button,
   Collapse,
   Divider,
-  FormControl, InputLabel,
-  MenuItem, Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   Stack,
   TextField,
 } from '@mui/material';
+import { COUNTRIES } from '../../constants/countries';
 import { useBookingContextProvider } from '../../context/BookingContext';
 
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
@@ -16,37 +19,35 @@ import { useState } from 'react';
 
 const ArrangementsTag = () => {
   const { name, setName, open, setOpen } = useBookingContextProvider();
-  const [country, setCountry] = useState('serbia')
+  const [country, setCountry] = useState('serbia');
 
   const handleClick = () => {
-    setOpen(open => !open);
+    setOpen((open) => !open);
     setName('');
-  }
+  };
 
   const handleChange = (event: SelectChangeEvent) => {
     setCountry(event.target.value);
   };
 
   const FlagMenu = () => (
-
     <FormControl fullWidth>
       <InputLabel id="flag-select-label">Država</InputLabel>
       <Select
         labelId="flag-select-label"
         value={country}
-        defaultValue='serbia'
+        defaultValue="serbia"
         label="Država"
         onChange={handleChange}
       >
-        <MenuItem value="serbia">🇷🇸 </MenuItem>
-        <MenuItem value="montenegro">🇲🇪 </MenuItem>
-        <MenuItem value="macedonia">🇲🇰 </MenuItem>
-        <MenuItem value="croatia">🇭🇷 </MenuItem>
-        <MenuItem value="bosnia">🇧🇦 </MenuItem>
-        <MenuItem value="slovenia">🇸🇮</MenuItem>
+        {COUNTRIES.map((country) => (
+          <MenuItem key={country.value} value={country.value}>
+            {country.label}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
-  )
+  );
 
   return (
     <Box
@@ -110,7 +111,7 @@ const ArrangementsTag = () => {
               sx={{ marginBottom: '1vh', marginLeft: '1ch' }}
             />
           </Stack>
-          <Divider orientation="horizontal" sx={{ my: "2vh" }}></Divider>
+          <Divider orientation="horizontal" sx={{ my: '2vh' }}></Divider>
           <TextField
             variant="outlined"
             required
