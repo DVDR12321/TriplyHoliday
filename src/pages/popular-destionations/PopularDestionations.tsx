@@ -1,3 +1,4 @@
+import LocationPinIcon from '@mui/icons-material/LocationPin';
 import { Box, Typography } from '@mui/material';
 import styled from 'styled-components';
 import { destinations } from './destionations';
@@ -71,6 +72,15 @@ const Title = styled(Typography)`
   font-size: 1.4rem !important;
 `;
 
+const PinImage = styled(LocationPinIcon)`
+  width: 25px !important;
+  height: 25px !important;
+  position:absolute;
+  top:15px;
+  right:15px;
+  color: white;
+`
+
 const Country = styled(Typography)`
   font-size: 0.9rem !important;
   opacity: 0.85;
@@ -78,9 +88,9 @@ const Country = styled(Typography)`
 
 export const PopularDestinationsSection = () => {
   return (
-    <Box sx={{ padding: '40px 20px' }}>
+    <Box sx={{ padding: '100px 20px' }}>
       <Typography
-        variant="h6"
+        variant="h4"
         sx={{
           fontWeight: 700,
           marginBottom: '30px',
@@ -94,6 +104,7 @@ export const PopularDestinationsSection = () => {
       <GridContainer>
         <LargeImage>
           <Img src={destinations[0].imageUrl} alt={destinations[0].title} />
+          <PinImage />
           <Overlay>
             <Title>{destinations[0].title}</Title>
             <Country>{destinations[0].country}</Country>
@@ -102,6 +113,7 @@ export const PopularDestinationsSection = () => {
 
         <TopRightImage>
           <Img src={destinations[1].imageUrl} alt={destinations[1].title} />
+          <PinImage />
           <Overlay>
             <Title>{destinations[1].title}</Title>
             <Country>{destinations[1].country}</Country>
@@ -110,6 +122,7 @@ export const PopularDestinationsSection = () => {
 
         <BottomRightImage>
           <Img src={destinations[2].imageUrl} alt={destinations[2].title} />
+          <PinImage />
           <Overlay>
             <Title>{destinations[2].title}</Title>
             <Country>{destinations[2].country}</Country>
@@ -118,6 +131,8 @@ export const PopularDestinationsSection = () => {
 
         <FullWidthImage>
           <Img src={destinations[3].imageUrl} alt={destinations[3].title} />
+          <PinImage />
+          <PinImage />
           <Overlay>
             <Title>{destinations[3].title}</Title>
             <Country>{destinations[3].country}</Country>

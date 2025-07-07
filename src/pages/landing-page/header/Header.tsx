@@ -18,6 +18,7 @@ const StyledAppBar = styled(AppBar, {
     boxShadow: elevated ? '0px 2px 4px rgba(0, 0, 0, 0.1)' : 'none',
     transition: 'all 0.3s ease-in-out',
   }),
+
 );
 
 export const Header = () => {
@@ -34,7 +35,7 @@ export const Header = () => {
       elevated={trigger}
       transparent={isOnHomePage}
     >
-      <Toolbar sx={{ justifyContent: 'space-between', px: 4 }}>
+      <Toolbar sx={{ justifyContent: 'space-between', px: 4 }} >
         {/* Logo */}
         <Typography variant="h6" sx={{ fontWeight: 700 }}>
           LOGO

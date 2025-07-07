@@ -28,29 +28,30 @@ export const setNewDocument = async () => {
   const documentRef = doc(dataBase, 'arrangements', 'appartmnent_three');
   const docSnap = await getDoc(documentRef);
 
-  if (docSnap.exists()) {
-    console.log('document allready exists');
-    return;
-  }
-  try {
-    await setDoc(documentRef, {
-      name: 'Vila Gamma',
-      country: 'Greece',
-      city: 'Kassandra',
-      pricePerDay: '100',
-      transportation: 'Organizovan prevoz',
-      numberOfNights: '5-15',
-      availableDates: 'Po upitu',
-      description: 'This is a such and such appartment, perfect for families',
-      tags: ['Ceo objekat ', '8 kreveta', '2 deteta gratis', 'u blizini plaže'],
-      available: true,
-    });
-  } catch (error) {
-    console.log('failed to create document with error:', error);
-  }
+    if (docSnap.exists()) {
+        console.log("document allready exists");
+        return;
+    }
+    try {
+        await setDoc(documentRef, {
+            name: 'Vila Gamma',
+            country: 'Greece',
+            city: 'Kassandra',
+            pricePerDay: '100',
+            transportation: 'Sopstveni prevoz',
+            numberOfNights: '5-20',
+            availableDates: 'Po upitu',
+            description: 'This is a such and such appartment, perfect for families',
+            tags: ["Apartman ", "4 kreveta", 'Organizovani izleti',],
+            available: true,
+        },
+        );
+    } catch (error) {
+        console.log("failed to create document with error:", error)
+    };
 
-  console.log('Document created');
-};
+    console.log('Document created')
+}
 
 export const getAllCollectionDocuments = async (collectionName: string) => {
   const collectionRef = collection(dataBase, collectionName);

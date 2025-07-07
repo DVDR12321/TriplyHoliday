@@ -1,5 +1,6 @@
 
 export type Arrangement = {
+    image: string,
     id: string;
     name: string;
     available: boolean;

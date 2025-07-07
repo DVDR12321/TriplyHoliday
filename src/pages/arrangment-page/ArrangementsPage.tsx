@@ -1,22 +1,39 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, styled, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { getAllCollectionDocuments } from '../../firebase/firebase';
+import {
+  getAllCollectionDocuments,
+  setNewDocument,
+} from '../../firebase/firebase';
 import { useSortedDocuments } from '../../hooks/useSortedDocuments';
 
 import type { Arrangement } from '../../types';
 import { ArrangementsCard } from './ArrangementsCard';
 import SortBy from './SortBy';
 
-import app3 from '../../assets/apartment_image.jpg';
-import app1 from '../../assets/app1.jpg';
-import app2 from '../../assets/app2.jpg';
-import image from '../../assets/arrrangements_page_header.jpg';
-
 import { Link, useLocation } from 'react-router-dom';
+
+import coverImage from '../../assets/arrrangements_page_header.jpg';
+
+import img1 from '../../assets/apartments/apartment_image1.jpg';
+import img2 from '../../assets/apartments/apartment_image2.jpg';
+import img3 from '../../assets/apartments/apartment_image3.jpg';
+import img4 from '../../assets/apartments/apartment_image4.jpg';
 import { ArrangementsTag } from './ArrangementsTag';
 
-// TODO move this to firebase
-export const APPARTMENT_IMAGES = [app2, app1, app3];
+const imageMap: { [key: string]: string } = {
+  0: img1,
+  1: img2,
+  2: img3,
+  3: img4,
+};
+
+export const HeaderGrid = styled(Grid)`
+  background-attachment: fixed;
+  width: 100%;
+  height: 65vh;
+  background-image: url(${coverImage});
+  background-repeat: 'no-repeat';
+`;
 
 export const ArrangementsPage = () => {
   const [documents, setDocuments] = useState<Arrangement[]>([]);
@@ -28,6 +45,8 @@ export const ArrangementsPage = () => {
     setDocuments(documents);
   };
 
+  setNewDocument();
+
   useEffect(() => {
     loadDocuments();
   }, []);
@@ -35,14 +54,8 @@ export const ArrangementsPage = () => {
   const sortedDocuments = useSortedDocuments(documents);
 
   return (
-    <Grid container rowSpacing={8} sx={{ width: '100vw' }}>
-      <Grid size={12}>
-        <img
-          src={image}
-          alt="header image"
-          style={{ height: '75vh', width: '100vw' }}
-        />
-      </Grid>
+    <Grid container rowSpacing={8} sx={{ width: '100%' }}>
+      <HeaderGrid size={12}></HeaderGrid>
 
       <Grid size={1} sx={{ height: '5' }} />
       <Grid
@@ -81,7 +94,7 @@ export const ArrangementsPage = () => {
             <Grid size={7} key={id}>
               <ArrangementsCard
                 arrangementData={{ ...document }}
-                image={APPARTMENT_IMAGES[id]}
+                image={imageMap[id]}
               />
             </Grid>
             <Grid size={4} />
