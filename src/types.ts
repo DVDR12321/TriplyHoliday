@@ -1,6 +1,7 @@
 
 export type Arrangement = {
     id: string;
+    name: string;
     available: boolean;
     city: string;
     country: string;
