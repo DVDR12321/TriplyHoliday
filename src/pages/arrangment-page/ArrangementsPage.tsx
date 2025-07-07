@@ -1,43 +1,24 @@
 import { Grid, styled, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import {
-  getAllCollectionDocuments,
-  setNewDocument
-} from '../../firebase/firebase';
+import { getAllCollectionDocuments } from '../../firebase/firebase';
+import { useSortedDocuments } from '../../hooks/useSortedDocuments';
 
 import type { Arrangement } from '../../types';
 import { ArrangementsCard } from './ArrangementsCard';
-import ArrangementsTag from './ArrangementsTag';
 import SortBy from './SortBy';
 
-import { useBookingContextProvider } from '../../context/BookingContext';
+import app3 from '../../assets/apartment_image.jpg';
+import app1 from '../../assets/app1.jpg';
+import app2 from '../../assets/app2.jpg';
+import image from '../../assets/arrrangements_page_header.jpg';
 
 import { Link, useLocation } from 'react-router-dom';
+import { ArrangementsTag } from './ArrangementsTag';
 
-import coverImage from '../../assets/arrrangements_page_header.jpg';
-
-import img1 from '../../assets/apartments/apartment_image1.jpg';
-import img2 from '../../assets/apartments/apartment_image2.jpg';
-import img3 from '../../assets/apartments/apartment_image3.jpg';
-import img4 from '../../assets/apartments/apartment_image4.jpg';
-
-const imageMap: { [key: string]: string } = {
-  1: img1,
-  2: img2,
-  3: img3,
-  4: img4,
-};
-
-export const HeaderGrid = styled(Grid)`
-  background-attachment: fixed;
-  width: 100%;
-  height:65vh;
-  background-image : url(${coverImage});
-  background-repeat: 'no-repeat';
-`
+// TODO move this to firebase
+export const APPARTMENT_IMAGES = [app2, app1, app3];
 
 export const ArrangementsPage = () => {
-  const { sortPhrase } = useBookingContextProvider();
   const [documents, setDocuments] = useState<Arrangement[]>([]);
 
   const location = useLocation();
@@ -47,23 +28,11 @@ export const ArrangementsPage = () => {
     setDocuments(documents);
   };
 
-  setNewDocument();
-
   useEffect(() => {
     loadDocuments();
   }, []);
 
-  const sortDocuments = () => {
-    if (sortPhrase === 'rastuća cena') {
-      return [...documents].sort((a, b) => Number(a.pricePerDay) - Number(b.pricePerDay));
-    } else if (sortPhrase === 'opadajuća cena') {
-      return [...documents].sort((a, b) => Number(b.pricePerDay) - Number(a.pricePerDay));
-    } else {
-      return documents;
-    }
-  };
-
-  const sortedDocuments = sortDocuments();
+  const sortedDocuments = useSortedDocuments(documents);
 
   return (
     <>
@@ -71,16 +40,26 @@ export const ArrangementsPage = () => {
         <HeaderGrid size={12} >
         </HeaderGrid>
 
-        <Grid size={1} sx={{ height: 5 }} />
-        <Grid size={2} sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
-          <Typography variant='body2'>
-            <Link to="/">
-              TriplyHoliday {'> '}
-            </Link>
-            <span style={{ fontWeight: 'bold' }}>{location.pathname.toString().replace('/', '')}</span>
+        <Grid size={1} sx={{ height: '5' }} />
+        <Grid
+          size={2}
+          sx={{
+            display: 'flex',
+            justifyContent: 'start',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body2">
+            <Link to="/">TriplyHoliday {'> '}</Link>
+            <span style={{ fontWeight: 'bold' }}>
+              {location.pathname.toString().replace('/', '')}
+            </span>
           </Typography>
         </Grid>
-        <Grid size={5} sx={{ display: 'flex', justifyContent: 'end', alignItems: 'bottom' }}>
+        <Grid
+          size={5}
+          sx={{ display: 'flex', justifyContent: 'end', alignItems: 'bottom' }}
+        >
           <SortBy />
         </Grid>
         <Grid size={3} />
@@ -96,7 +75,10 @@ export const ArrangementsPage = () => {
           return (
             <>
               <Grid size={7} key={id}>
-                <ArrangementsCard {...document} image={imageMap[id + 1]} />
+                <ArrangementsCard
+                  arrangementData={{ ...document }}
+                  image={APPARTMENT_IMAGES[id]}
+                />
               </Grid>
               <Grid size={4} />
               <Grid size={1} sx={{ my: '5vh' }} />
@@ -104,6 +86,5 @@ export const ArrangementsPage = () => {
           );
         })}
       </Grid>
-    </>
-  );
+      );
 };
