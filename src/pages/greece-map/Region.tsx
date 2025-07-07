@@ -3,9 +3,9 @@ import type { SvgPath } from './types';
 
 const RegionPath = styled.path<RegionPathProps>`
   fill: ${({ isHovered }) =>
-    isHovered ? '#1976d2' : '#adadad'}; /* Svetlija siva za nehover */
-  stroke:rgb(255, 255, 255);
-  stroke-width: 2;
+    isHovered ? '#ffffff' : '#888888'}; /* Svetlija siva za nehover */
+  stroke: #bbbbbb;
+  stroke-width: 1;
   cursor: pointer;
   transition: fill 0.2s ease;
 `;

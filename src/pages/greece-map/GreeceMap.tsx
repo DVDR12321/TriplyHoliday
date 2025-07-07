@@ -20,7 +20,6 @@ export const GreeceMap = ({
 }: GreeceMapProps) => {
   const handleRegionClick = (id: string, name: string) => {
     const translated = regionNameMap[name] || name;
-    //alert(`Kliknuto: ${translated} (ID: ${id})`);
 
     const section = document.getElementById('recommennded-destinations');
     if (section) {
@@ -28,7 +27,6 @@ export const GreeceMap = ({
       const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
-
   };
 
   return (
