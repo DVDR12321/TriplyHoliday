@@ -74,7 +74,7 @@ const ArrangementsTag = () => {
         <Box
           sx={{
             width: '20vw',
-            height: '70vh',
+            height: '700px',
             backgroundColor: 'background.paper',
             boxShadow: 3,
             p: 2,

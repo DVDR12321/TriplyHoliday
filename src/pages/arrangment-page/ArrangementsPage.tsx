@@ -1,7 +1,8 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid, styled, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import {
-  getAllCollectionDocuments
+  getAllCollectionDocuments,
+  setNewDocument
 } from '../../firebase/firebase';
 
 import type { Arrangement } from '../../types';
@@ -9,11 +10,31 @@ import { ArrangementsCard } from './ArrangementsCard';
 import ArrangementsTag from './ArrangementsTag';
 import SortBy from './SortBy';
 
-import image from '../../assets/arrrangements_page_header.jpg';
 import { useBookingContextProvider } from '../../context/BookingContext';
 
 import { Link, useLocation } from 'react-router-dom';
 
+import coverImage from '../../assets/arrrangements_page_header.jpg';
+
+import img1 from '../../assets/apartments/apartment_image1.jpg';
+import img2 from '../../assets/apartments/apartment_image2.jpg';
+import img3 from '../../assets/apartments/apartment_image3.jpg';
+import img4 from '../../assets/apartments/apartment_image4.jpg';
+
+const imageMap: { [key: string]: string } = {
+  1: img1,
+  2: img2,
+  3: img3,
+  4: img4,
+};
+
+export const HeaderGrid = styled(Grid)`
+  background-attachment: fixed;
+  width: 100%;
+  height:65vh;
+  background-image : url(${coverImage});
+  background-repeat: 'no-repeat';
+`
 
 export const ArrangementsPage = () => {
   const { sortPhrase } = useBookingContextProvider();
@@ -26,7 +47,8 @@ export const ArrangementsPage = () => {
     setDocuments(documents);
   };
 
-  //setNewDocument();
+  setNewDocument();
+
   useEffect(() => {
     loadDocuments();
   }, []);
@@ -45,16 +67,11 @@ export const ArrangementsPage = () => {
 
   return (
     <>
-      <Grid container rowSpacing={8} sx={{ width: '100vw' }}>
-        <Grid size={12} >
-          <img
-            src={image}
-            alt="header image"
-            style={{ height: '75vh', width: '100vw', }}
-          />
-        </Grid>
+      <Grid container rowSpacing={8} sx={{ width: '100%' }}>
+        <HeaderGrid size={12} >
+        </HeaderGrid>
 
-        <Grid size={1} sx={{ height: '5' }} />
+        <Grid size={1} sx={{ height: 5 }} />
         <Grid size={2} sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center' }}>
           <Typography variant='body2'>
             <Link to="/">
@@ -79,7 +96,7 @@ export const ArrangementsPage = () => {
           return (
             <>
               <Grid size={7} key={id}>
-                <ArrangementsCard {...document} />
+                <ArrangementsCard {...document} image={imageMap[id + 1]} />
               </Grid>
               <Grid size={4} />
               <Grid size={1} sx={{ my: '5vh' }} />
