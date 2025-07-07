@@ -7,109 +7,110 @@ import {
   Card,
   CardMedia,
   Divider,
-  Typography
+  Typography,
 } from '@mui/material';
+
 import { useBookingContextProvider } from '../../context/BookingContext';
 
 import type { Arrangement } from '../../types';
 
-export const ArrangementsCard = ({ image, ...arrangementData }: Arrangement) => {
+type ArrangementsCard = {
+  arrangementData: Arrangement;
+  image: string;
+}
+
+export const ArrangementsCard = ({arrangementData, image } : ArrangementsCard) => {
   const { setName, setOpen } = useBookingContextProvider();
 
   const handleClick = () => {
     setOpen(true);
     setName(arrangementData.name);
-  }
+  };
 
   return (
-    <Card sx={{ display: 'flex', boxShadow: '10' }}>
-      <CardMedia
-        component="img"
-        sx={{ width: '25vw', height: '35vh' }}
-        image={image}
-        alt="apartment image"
-      />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '1vh 2vw 1vh 4vw',
-        }}
-      >
-        <Typography variant="h4" fontWeight="bold">
-          {arrangementData.name}
-        </Typography>
-        <Typography component="div" variant="h5" paddingBottom="1ch">
-          {arrangementData.city} | {arrangementData.country}
-        </Typography>
-
+    <>
+      <Card sx={{ display: 'flex', boxShadow: '10', padding: '2vh' }}>
+        <CardMedia
+          component="img"
+          sx={{ width: '25vw', height: '35vh' }}
+          image={image}
+          alt="apartment image"
+        />
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'row',
-            padding: '2vh 0 2vh 0',
+            flexDirection: 'column',
+            padding: '2vh 3vw 2vh 5vw',
           }}
         >
-          <CalendarMonthOutlinedIcon />
-          <Typography
-            component="div"
-            variant="body2"
-            padding="0 2ch 0 2ch "
-          >
-            {arrangementData.availableDates}
+          <Typography variant="h5" fontWeight="bold">
+            {arrangementData.name}
           </Typography>
-          <Divider orientation="vertical" />
-          <Box sx={{ paddingLeft: '2ch' }}>
-            <DirectionsBusFilledOutlinedIcon />
-          </Box>
+          <Typography component="div" variant="h6" paddingBottom="1ch">
+            {arrangementData.city} | {arrangementData.country}
+          </Typography>
 
-          <Typography
-            component="div"
-            variant="body2"
-            padding="0 2ch 0 2ch "
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              padding: '2vh 0 2vh 0',
+            }}
           >
-            {arrangementData.transportation}
-          </Typography>
-          <Divider orientation="vertical" />
-          <Box sx={{ paddingLeft: '2ch' }}>
-            <KingBedOutlinedIcon />
-          </Box>
-          <Typography
-            component="div"
-            variant="body2"
-            padding="0 2ch 0 2ch "
-          >
-            {arrangementData.numberOfNights} noćenja
-          </Typography>
-        </Box>
-        <Divider sx={{ my: '1vh', borderStyle: 'dashed', borderColor: 'grey.500' }} />
-        <Typography variant="body1" fontWeight='bold'>
-          Dodatne informacije
-        </Typography>
-        <Typography component="div" variant="body2" >
-          {arrangementData.tags.map((element, i) => (
-            <span style={{ fontStyle: 'italic' }} key={i}>{element}{i !== arrangementData.tags.length - 1 ? ' — ' : ''}</span>
-          ))}
-        </Typography>
-        <Divider sx={{ my: '1vh', borderStyle: 'dashed', borderColor: 'grey.500' }} />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingTop: '1vh',
-          }}
-        >
-          <Typography variant="h5" color="#0080FF" fontWeight='bold'>
-            Od {arrangementData.pricePerDay} €
-          </Typography>
-          <Button variant="outlined" onClick={handleClick} >
-            {' '}
-            Pošalji upit{' '}
-          </Button>
-        </Box>
+            <CalendarMonthOutlinedIcon />
+            <Typography component="div" variant="body2" padding="0 2ch 0 2ch ">
+              {arrangementData.availableDates}
+            </Typography>
+            <Divider orientation="vertical" />
+            <Box sx={{ paddingLeft: '2ch' }}>
+              <DirectionsBusFilledOutlinedIcon />
+            </Box>
 
-      </Box>
-    </Card>
+            <Typography component="div" variant="body2" padding="0 2ch 0 2ch ">
+              {arrangementData.transportation}
+            </Typography>
+            <Divider orientation="vertical" />
+            <Box sx={{ paddingLeft: '2ch' }}>
+              <KingBedOutlinedIcon />
+            </Box>
+            <Typography component="div" variant="body2" padding="0 2ch 0 2ch ">
+              {arrangementData.numberOfNights} noćenja
+            </Typography>
+          </Box>
+          <Divider
+            sx={{ my: '1vh', borderStyle: 'dashed', borderColor: 'grey.500' }}
+          />
+          <Typography variant="body2" fontWeight="bold">
+            Dodatne informacije
+          </Typography>
+          <Typography component="div" variant="body2">
+            {arrangementData.tags.map((element, i) => (
+              <span style={{ fontStyle: 'italic' }} key={i}>
+                {element}
+                {i !== arrangementData.tags.length - 1 ? ' — ' : ''}
+              </span>
+            ))}
+          </Typography>
+          <Divider
+            sx={{ my: '1vh', borderStyle: 'dashed', borderColor: 'grey.500' }}
+          />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingTop: '1vh',
+            }}
+          >
+            <Typography variant="h6" color="#0080FF" fontWeight="bold">
+              Od {arrangementData.pricePerDay} €
+            </Typography>
+            <Button variant="outlined" onClick={handleClick}>
+              Pošalji upit
+            </Button>
+          </Box>
+        </Box>
+      </Card>
+    </>
   );
 };
