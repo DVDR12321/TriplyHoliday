@@ -3,8 +3,10 @@ import { Region } from './Region';
 import { regionNameMap, type SvgPath } from './types';
 
 const Svg = styled.svg`
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   height: auto;
+  display: block;
 `;
 
 type GreeceMapProps = {
