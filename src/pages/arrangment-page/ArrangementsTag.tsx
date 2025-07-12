@@ -82,7 +82,6 @@ export const ArrangementsTag = () => {
         </Box>
 
         <Box sx={{ p: 2, overflowY: 'auto' }}>
-          {/* Step 1 */}
           {step === 1 && (
             <>
               <TextField

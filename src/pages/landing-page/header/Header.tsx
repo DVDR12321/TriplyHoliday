@@ -1,12 +1,19 @@
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
   Box,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
   Toolbar,
   Typography,
   useMediaQuery,
   useScrollTrigger,
 } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const StyledAppBar = styled(AppBar, {
@@ -18,7 +25,6 @@ const StyledAppBar = styled(AppBar, {
     boxShadow: elevated ? '0px 2px 4px rgba(0, 0, 0, 0.1)' : 'none',
     transition: 'all 0.3s ease-in-out',
   }),
-
 );
 
 export const Header = () => {
@@ -29,80 +35,103 @@ export const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const navItems = [
+    { label: 'Destinacije', path: '/' },
+    { label: 'Aranžmani', path: '/aranzmani' },
+    { label: 'Kontakt', path: '/kontakt' }, // Added /kontakt
+  ];
+
   return (
-    <StyledAppBar
-      position="fixed"
-      elevated={trigger}
-      transparent={isOnHomePage}
-    >
-      <Toolbar sx={{ justifyContent: 'space-between', px: 4 }} >
-        {/* Logo */}
-        <Typography variant="h6" sx={{ fontWeight: 700 }}>
-          LOGO
-        </Typography>
+    <>
+      <StyledAppBar
+        position="fixed"
+        elevated={trigger}
+        transparent={isOnHomePage}
+      >
+        <Toolbar sx={{ justifyContent: 'space-between', px: 2 }}>
+          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            LOGO
+          </Typography>
 
-        {!isMobile && (
-          <Box
-            sx={{
-              position: 'absolute',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              gap: 4,
-            }}
-          >
-            <Link
-              to="/"
-              style={{
-                textDecoration: 'none',
-                textTransform: 'none',
-                all: 'unset',
+          {isMobile ? (
+            <IconButton edge="end" color="inherit" onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
+          ) : (
+            <Box
+              sx={{
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                display: 'flex',
+                gap: 4,
               }}
             >
-              <Typography
-                variant="h6"
-                sx={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  cursor: 'pointer',
-                }}
-              >
-                Destinacije
-              </Typography>
-            </Link>
+              {navItems.map(({ label, path }) => (
+                <Link
+                  key={label}
+                  to={path}
+                  style={{ all: 'unset', cursor: 'pointer' }}
+                >
+                  <Typography variant="h6" sx={{ color: 'inherit' }}>
+                    {label}
+                  </Typography>
+                </Link>
+              ))}
+            </Box>
+          )}
+        </Toolbar>
+      </StyledAppBar>
 
-            <Link
-              to="/aranzmani"
-              style={{
-                textDecoration: 'none',
-                textTransform: 'none',
-                all: 'unset',
-              }}
-            >
-              <Typography
-                variant="h6"
-                sx={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  cursor: 'pointer',
-                }}
-              >
-                Aranžmani
-              </Typography>
-            </Link>
-            <Typography
-              variant="h6"
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+        PaperProps={{
+          sx: {
+            width: 260,
+            paddingTop: 4,
+            backgroundColor: '#fff', // clean white background
+          },
+        }}
+      >
+        <List sx={{ paddingX: 2 }}>
+          {navItems.map(({ label, path }, index) => (
+            <ListItem
+              key={label}
+              disablePadding
+              onClick={handleDrawerToggle}
+              component={Link}
+              to={path}
               sx={{
                 textDecoration: 'none',
-                color: 'inherit',
-                cursor: 'pointer',
+                color: '#000',
+                paddingY: 1.5,
+                paddingX: 2,
+                borderRadius: 1,
+                transition: 'background 0.3s',
+                '&:hover': {
+                  backgroundColor: '#f0f0f0',
+                },
               }}
             >
-              Kontakt
-            </Typography>
-          </Box>
-        )}
-      </Toolbar>
-    </StyledAppBar>
+              <ListItemText
+                primary={label}
+                primaryTypographyProps={{
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </>
   );
 };

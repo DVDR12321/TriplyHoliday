@@ -20,6 +20,11 @@ const Container = styled(Stack)(({ theme }) => ({
   alignItems: 'flex-start',
   maxWidth: 950,
   width: '100%',
+
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    alignItems: 'stretch', // allow full width stacking
+  },
 }));
 
 export const GreeceMapSection = () => {

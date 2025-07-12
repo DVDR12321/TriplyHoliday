@@ -15,6 +15,15 @@ const GridContainer = styled(Box)`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  @media (max-width: 550px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'large'
+      'topRight'
+      'bottomRight'
+      'fullwidth';
+  }
 `;
 
 const LargeImage = styled(Box)`

@@ -10,29 +10,44 @@ type GreeceListProps = {
   setHoveredId: (id: string | null) => void;
 };
 
-const StyledList = styled(List)`
-  max-height: 600px;
-  overflow-y: auto;
-  width: 300px;
-  padding: 0;
-  background-color: transparent;
-`;
+const StyledList = styled(List)(({ theme }) => ({
+  maxHeight: 600,
+  overflowY: 'auto',
+  width: 300,
+  padding: 0,
+  backgroundColor: 'transparent',
 
-const CustomListItemButton = styled(ListItemButton)<{ isHovered: boolean }>`
-  user-select: none;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  font-size: 1.1rem;
-  background-color: ${({ isHovered }) =>
-    isHovered ? '#555555' : 'transparent'};
-  color: ${({ isHovered }) => (isHovered ? '#ffffff' : '#dddddd')};
-  transition: background 0.2s ease;
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: theme.spacing(1),
+    maxHeight: 'none',
+  },
+}));
 
-  &:hover {
-    background-color: #555555;
-    color: #ffffff;
-  }
-`;
+const CustomListItemButton = styled(ListItemButton)<{ isHovered: boolean }>(
+  ({ isHovered, theme }) => ({
+    userSelect: 'none',
+    borderRadius: 6,
+    marginBottom: 6,
+    fontSize: '1.1rem',
+    backgroundColor: isHovered ? '#555555' : 'transparent',
+    color: isHovered ? '#ffffff' : '#dddddd',
+    transition: 'background 0.2s ease',
+
+    '&:hover': {
+      backgroundColor: '#555555',
+      color: '#ffffff',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.9rem',
+      marginBottom: 0,
+      padding: theme.spacing(1),
+    },
+  }),
+);
 
 export const GreeceList = ({
   paths,

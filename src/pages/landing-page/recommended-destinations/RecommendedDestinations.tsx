@@ -1,31 +1,5 @@
 import { Box, CardMedia, Typography } from '@mui/material';
-
-const accommodations = [
-  {
-    title: 'Kefalonia',
-    price: 120,
-    imageUrl:
-      'https://www.thethinkingtraveller.com/media/Resized/GREECE%20villas/Noera/1000/TTT_Cyclades_Islands_Mykonos_Noera_OCT23_253.jpg',
-  },
-  {
-    title: 'Krf',
-    price: 150,
-    imageUrl:
-      'https://www.thethinkingtraveller.com/media/Resized/GREECE%20villas/Carmen/SEP22/1000/TTT_Greece_Porto_Heli_Carmen_SEP22_010.jpg',
-  },
-  {
-    title: 'Halkidiki',
-    price: 130,
-    imageUrl:
-      'https://www.thethinkingtraveller.com/media/Resized/GREECE%20villas/Iriana/FEB22/1000/Greece_Porto_Heli_Iriana_NOV21_3.jpg',
-  },
-  {
-    title: 'Santorini',
-    price: 140,
-    imageUrl:
-      'https://images.contentstack.io/v3/assets/blt00454ccee8f8fe6b/blt01d6d1d3f09fa0c3/6139e2f0422c0828c05248a3/UK_Greece_GR_Header.jpg?width=1920&quality=70&auto=webp',
-  },
-];
+import { accommodations } from './accomodations';
 
 export const RecommendedDestinations = () => {
   return (
@@ -34,10 +8,17 @@ export const RecommendedDestinations = () => {
       sx={{
         py: 8,
         px: 1,
-        maxWidth: '1200px',
+        maxWidth: '1400px',
         mx: 'auto',
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, minmax(200px, 1fr))',
+        padding: {
+          xs: '100px',
+        },
+        gridTemplateColumns: {
+          xs: '1fr', // mobile: 1 per row
+          sm: 'repeat(2, 1fr)', // tablet: 2 per row
+          md: 'repeat(4, 1fr)', // desktop: 4 per row
+        },
         gap: 3,
       }}
     >
@@ -89,7 +70,6 @@ export const RecommendedDestinations = () => {
               pt: 6,
               pb: 4,
               width: '100%',
-              maxWidth: '100%',
               position: 'relative',
               zIndex: 1,
             }}

@@ -45,7 +45,6 @@ export const Footer = () => {
             gap: 4,
           }}
         >
-          {/* About Section */}
           <Box sx={{ flex: '1 1 300px', minWidth: 280 }}>
             <Typography
               variant="h5"
@@ -149,15 +148,8 @@ export const Footer = () => {
               </IconButton>
             </Stack>
           </Box>
-
-          {/* Links Section */}
           <Box sx={{ flex: '1 1 150px', minWidth: 150 }}>
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              gutterBottom
-              sx={{ fontFamily: '"Montserrat", sans-serif' }} // New font
-            >
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
               Linkovi
             </Typography>
             <Stack spacing={1}>
@@ -176,7 +168,6 @@ export const Footer = () => {
             </Stack>
           </Box>
 
-          {/* Subscribe Section */}
           <Box sx={{ flex: '1 1 300px', minWidth: 280 }}>
             <Typography
               variant="h6"
@@ -203,13 +194,6 @@ export const Footer = () => {
                 type="email"
                 required
                 fullWidth
-                InputProps={{
-                  sx: {
-                    bgcolor: 'rgba(33, 38, 45, 0.8)',
-                    color: '#e1e4e8',
-                    '& .MuiInputBase-input': { color: '#e1e4e8' },
-                  },
-                }}
               />
               <Button
                 variant="contained"
