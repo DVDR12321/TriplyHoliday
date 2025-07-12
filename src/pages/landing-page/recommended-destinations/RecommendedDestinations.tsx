@@ -8,7 +8,7 @@ export const RecommendedDestinations = () => {
       sx={{
         py: 8,
         px: 1,
-        maxWidth: '1200px',
+        maxWidth: '1400px',
         mx: 'auto',
         display: 'grid',
         padding: {
