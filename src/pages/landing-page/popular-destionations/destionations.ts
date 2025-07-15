@@ -1,7 +1,7 @@
-import kefalonija from '../../assets/kefalonija2.jpg';
-import krf from '../../assets/krf2.jpg';
-import leptokaria from '../../assets/leptokaria.jpg';
-import neaVrasna from '../../assets/nea-vrasna.jpg';
+import kefalonija from '../../../assets/kefalonija2.jpg';
+import krf from '../../../assets/krf2.jpg';
+import leptokaria from '../../../assets/leptokaria.jpg';
+import neaVrasna from '../../../assets/nea-vrasna.jpg';
 
 export const destinations = [
   {
