@@ -1,31 +1,22 @@
 import { Grid, styled, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import {
-  getAllCollectionDocuments,
-  setNewDocument,
-} from '../../firebase/firebase';
+import { getAllCollectionDocuments } from '../../firebase/firebase';
 import { useSortedDocuments } from '../../hooks/useSortedDocuments';
 
 import type { Arrangement } from '../../types';
 import { ArrangementsCard } from './ArrangementsCard';
 import SortBy from './SortBy';
 
-import { Link, useLocation } from 'react-router-dom';
-
+import app3 from '../../assets/apartments/apartment_image1.jpg';
+import app1 from '../../assets/apartments/apartment_image2.jpg';
+import app2 from '../../assets/apartments/apartment_image3.jpg';
 import coverImage from '../../assets/arrrangements_page_header.jpg';
 
-import img1 from '../../assets/apartments/apartment_image1.jpg';
-import img2 from '../../assets/apartments/apartment_image2.jpg';
-import img3 from '../../assets/apartments/apartment_image3.jpg';
-import img4 from '../../assets/apartments/apartment_image4.jpg';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrangementsTag } from './ArrangementsTag';
 
-const imageMap: { [key: string]: string } = {
-  0: img1,
-  1: img2,
-  2: img3,
-  3: img4,
-};
+// TODO move this to firebase
+export const APPARTMENT_IMAGES = [app2, app1, app3];
 
 export const HeaderGrid = styled(Grid)`
   background-attachment: fixed;
@@ -44,8 +35,6 @@ export const ArrangementsPage = () => {
     const documents = await getAllCollectionDocuments('arrangements');
     setDocuments(documents);
   };
-
-  setNewDocument();
 
   useEffect(() => {
     loadDocuments();
@@ -94,7 +83,7 @@ export const ArrangementsPage = () => {
             <Grid size={7} key={id}>
               <ArrangementsCard
                 arrangementData={{ ...document }}
-                image={imageMap[id]}
+                image={APPARTMENT_IMAGES[id]}
               />
             </Grid>
             <Grid size={4} />
@@ -103,5 +92,6 @@ export const ArrangementsPage = () => {
         );
       })}
     </Grid>
+    </>
   );
 };

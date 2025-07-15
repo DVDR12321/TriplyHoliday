@@ -19,7 +19,7 @@ type ArrangementsCard = {
   image: string;
 }
 
-export const ArrangementsCard = ({arrangementData, image } : ArrangementsCard) => {
+export const ArrangementsCard = ({ arrangementData, image }: ArrangementsCard) => {
   const { setName, setOpen } = useBookingContextProvider();
 
   const handleClick = () => {
@@ -111,6 +111,9 @@ export const ArrangementsCard = ({arrangementData, image } : ArrangementsCard) =
           </Box>
         </Box>
       </Card>
+    </>
+        </Box >
+      </Card >
     </>
   );
 };
