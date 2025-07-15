@@ -4,8 +4,8 @@ import { getAllCollectionDocuments } from '../../firebase/firebase';
 import { useSortedDocuments } from '../../hooks/useSortedDocuments';
 
 import type { Arrangement } from '../../types';
-import { ArrangementsCard } from './ArrangementsCard';
-import SortBy from './SortBy';
+import { ArrangementsCard } from './arrangements-card/ArrangementsCard';
+import SortBy from './sorty-by/SortBy';
 
 import app3 from '../../assets/apartments/apartment_image1.jpg';
 import app1 from '../../assets/apartments/apartment_image2.jpg';
@@ -13,7 +13,7 @@ import app2 from '../../assets/apartments/apartment_image3.jpg';
 import coverImage from '../../assets/arrrangements_page_header.jpg';
 
 import { Link, useLocation } from 'react-router-dom';
-import { ArrangementsTag } from './ArrangementsTag';
+import { ArrangementsTag } from './arrangements-tag/ArrangementsTag';
 
 // TODO move this to firebase
 export const APPARTMENT_IMAGES = [app2, app1, app3];

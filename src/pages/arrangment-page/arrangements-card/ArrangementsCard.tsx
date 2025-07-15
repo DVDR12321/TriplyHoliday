@@ -10,9 +10,9 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useBookingContextProvider } from '../../context/BookingContext';
+import { useBookingContextProvider } from '../../../context/BookingContext';
 
-import type { Arrangement } from '../../types';
+import type { Arrangement } from '../../../types';
 
 type ArrangementsCard = {
   arrangementData: Arrangement;

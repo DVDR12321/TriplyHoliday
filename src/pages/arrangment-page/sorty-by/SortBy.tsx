@@ -1,7 +1,7 @@
 import { Button, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import type { MouseEvent } from 'react';
 import { useState } from 'react';
-import { useBookingContextProvider } from '../../context/BookingContext';
+import { useBookingContextProvider } from '../../../context/BookingContext';
 
 const SortBy = () => {
   const { setSortPhrase } = useBookingContextProvider();

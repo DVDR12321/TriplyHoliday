@@ -15,8 +15,8 @@ import {
 import { DatePicker } from '@mui/x-date-pickers';
 import type { Dayjs } from 'dayjs';
 import { useState } from 'react';
-import { COUNTRIES } from '../../constants/countries';
-import { useBookingContextProvider } from '../../context/BookingContext';
+import { COUNTRIES } from '../../../constants/countries';
+import { useBookingContextProvider } from '../../../context/BookingContext';
 
 export const ArrangementsTag = () => {
   const { name, setName, open, setOpen } = useBookingContextProvider();
