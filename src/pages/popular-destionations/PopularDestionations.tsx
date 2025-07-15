@@ -15,15 +15,6 @@ const GridContainer = styled(Box)`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  @media (max-width: 550px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      'large'
-      'topRight'
-      'bottomRight'
-      'fullwidth';
-  }
 `;
 
 const LargeImage = styled(Box)`
@@ -84,11 +75,11 @@ const Title = styled(Typography)`
 const PinImage = styled(LocationPinIcon)`
   width: 25px !important;
   height: 25px !important;
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  position:absolute;
+  top:15px;
+  right:15px;
   color: white;
-`;
+`
 
 const Country = styled(Typography)`
   font-size: 0.9rem !important;
@@ -98,6 +89,18 @@ const Country = styled(Typography)`
 export const PopularDestinationsSection = () => {
   return (
     <Box sx={{ padding: '100px 20px' }}>
+      <Typography
+        variant="h4"
+        sx={{
+          fontWeight: 700,
+          marginBottom: '30px',
+          maxWidth: 1100,
+          mx: 'auto',
+        }}
+      >
+        Najtraženije destinacije
+      </Typography>
+
       <GridContainer>
         <LargeImage>
           <Img src={destinations[0].imageUrl} alt={destinations[0].title} />
