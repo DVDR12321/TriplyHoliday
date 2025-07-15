@@ -112,8 +112,5 @@ export const ArrangementsCard = ({ arrangementData, image }: ArrangementsCard) =
         </Box>
       </Card>
     </>
-        </Box >
-      </Card >
-    </>
   );
 };
